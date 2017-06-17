@@ -17,3 +17,18 @@ cryptsetup --cipher=aes-xts-plain64 --key-size=512 --offset=0 --key-file=./disk.
 cfdisk /dev/mapper/encrypted-root
 partprobe /dev/mapper/encrypted-root
 ```
+
+## After normal install
+
+### In mkinitcpio.conf
+```
+HOOKS="... keyboard block ssldec encrypt lvm2 ... filesystems ..."
+```
+### Install ssldec to initcpio
+```
+pacman -S wget
+cd /lib/initcpio/install/
+wget .../install/ssldec
+cd ../hooks/
+wget .../hooks/ssldec
+```
