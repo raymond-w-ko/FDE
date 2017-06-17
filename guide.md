@@ -15,4 +15,5 @@ cryptsetup --cipher=aes-xts-plain64 --key-size=512 --offset=0 --key-file=./disk.
 ## Create partitions
 ```
 cfdisk /dev/mapper/encrypted-root
+partprobe /dev/mapper/encrypted-root
 ```
