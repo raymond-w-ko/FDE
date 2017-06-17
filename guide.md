@@ -9,5 +9,10 @@ openssl aes-256-cbc -d -in disk.enc -out disk.key
 
 ## Encrypt the disk
 ```
-cryptsetup --cipher=aes-xts-plain64 --key-size=512 --offset=0 --key-file=./disk.key open --type=plain /dev/sdX main
+cryptsetup --cipher=aes-xts-plain64 --key-size=512 --offset=0 --key-file=./disk.key open --type=plain /dev/sdX encrypted-root
+```
+
+## Create partitions
+```
+cfdisk /dev/mapper/encrypted-root
 ```
