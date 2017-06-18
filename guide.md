@@ -9,13 +9,15 @@ openssl aes-256-cbc -d -in disk.enc -out disk.key
 
 ## Encrypt the disk
 ```
-cryptsetup --cipher=aes-xts-plain64 --key-size=512 --offset=0 --key-file=./disk.key open --type=plain /dev/sdX encrypted-root
+cryptsetup --cipher=aes-xts-plain64 --key-size=512 --offset=0 --key-file=./disk.key open --type=plain /dev/sdX enc
 ```
 
-## Create partitions
+## Create partitions with LVM
 ```
-cfdisk /dev/mapper/encrypted-root
-partprobe /dev/mapper/encrypted-root
+pvcreate /dev/mapper/enc
+vgcreate store /dev/mapper/enc
+lvcreate -L 12G store -n swap
+lvcreate -l 100%FREE store -n home
 ```
 
 ## After normal install
