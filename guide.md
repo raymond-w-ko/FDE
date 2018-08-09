@@ -24,7 +24,7 @@ lvcreate -l 100%FREE store -n home
 
 ### In mkinitcpio.conf
 ```
-HOOKS="... keyboard block ssldec encrypt lvm2 ... filesystems ..."
+HOOKS=(... keyboard block ssldec encrypt lvm2 filesystems fsck)
 ```
 ### Install ssldec to initcpio
 ```
