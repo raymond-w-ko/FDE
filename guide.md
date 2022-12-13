@@ -9,7 +9,7 @@ openssl aes-256-cbc -pbkdf2 -d -in disk.enc -out disk.key
 
 ## Clean disk
 ```
-wipefs --all --backup /dev/sda
+wipefs --all --backup /dev/sdX
 ```
 
 ## Encrypt the disk
