@@ -36,7 +36,7 @@ run_hook ()
         if [ -f "${encfile}" ]; then
             while true; do
                 read -rsp "${prompt}" password
-                openssl aes256 -pass pass:"${password}" -d -in "${encfile}" -out "${decfile}" >/dev/null 2>&1
+                openssl aes-256-cbc -pbkdf2 -pass pass:"${password}" -d -in "${encfile}" -out "${decfile}" >/dev/null 2>&1
                 retcode="$?"
                 if [ "${retcode}" != "0" ]; then
                     sleep 2
