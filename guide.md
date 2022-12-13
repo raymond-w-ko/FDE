@@ -9,7 +9,7 @@ openssl aes-256-cbc -pbkdf2 -d -in disk.enc -out disk.key
 
 ## Encrypt the disk
 ```
-cryptsetup --cipher=aes-xts-plain64 --key-size=512 --offset=0 --key-file=./disk.key open --type=plain /dev/sdX enc
+cryptsetup --cipher=aes-xts-plain64 --key-size=256 --offset=0 --key-file=./disk.key open --type=plain /dev/sdX enc
 ```
 
 ## Create partitions with LVM
