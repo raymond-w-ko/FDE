@@ -39,3 +39,10 @@ wget .../install/ssldec
 cd ../hooks/
 wget .../hooks/ssldec
 ```
+
+### Create a bootable USB drive
+```
+syslinux --install /dev/sdXn
+# ignore error: Hidden (2048) does not match sectors (63)
+dd bs=440 count=1 conv=notrunc if=/usr/lib/syslinux/bios/mbr.bin of=/dev/sdX
+```
