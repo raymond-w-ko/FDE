@@ -3,8 +3,8 @@
 
 ## Create a keyfile
 ```
-dd if=/dev/urandom bs=1024 count=8 2>/dev/null | openssl aes-256-cbc -out disk.enc
-openssl aes-256-cbc -d -in disk.enc -out disk.key
+dd if=/dev/urandom bs=1M count=8 2>/dev/null | openssl aes-256-cbc -pbkdf2 -out disk.enc
+openssl aes-256-cbc -pbkdf2 -d -in disk.enc -out disk.key
 ```
 
 ## Encrypt the disk
