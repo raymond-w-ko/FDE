@@ -41,8 +41,11 @@ wget .../hooks/ssldec
 ```
 
 ### Create a bootable USB drive
-```
-syslinux --install /dev/sdXn
-# ignore error: Hidden (2048) does not match sectors (63)
-dd bs=440 count=1 conv=notrunc if=/usr/lib/syslinux/bios/mbr.bin of=/dev/sdX
-```
+* `wipefs` on the USB drive.
+* Use `cfdisk` to create a `dos` partition table, with one partition, FAT32, 0xb partition type code.
+* `grub-install --target=i386-pc --recheck --boot-directory=/mnt/bootusb /dev/sdX`
+* (above not in chroot)
+* mount USB drive
+* chroot
+* `cd /boot`
+* `cp -r * /boot.usb/`
